@@ -3,9 +3,16 @@ import { createPinia } from 'pinia'
 
 import App from './App.vue'
 import router from './router'
-import PrimeVue from 'primevue/config';
-import InputText from 'primevue/inputtext';
-import Button from 'primevue/button';
+import PrimeVue from 'primevue/config'
+import InputText from 'primevue/inputtext'
+import Button from 'primevue/button'
+import Checkbox from 'primevue/checkbox'
+import Dialog from 'primevue/dialog'
+import Calendar from 'primevue/calendar'
+import Divider from 'primevue/divider'
+import Password from 'primevue/password'
+import RadioButton from 'primevue/radiobutton';
+
 
 import 'primevue/resources/themes/tailwind-light/theme.css';
 import 'primevue/resources/primevue.min.css';
@@ -19,5 +26,10 @@ app.use(router)
 app.use(PrimeVue)
 app.component("Button", Button)
 app.component("InputText", InputText)
+app.component('Checkbox', Checkbox)
+app.component('Dialog', Dialog)
+app.component('Calendar', Calendar)
+app.component('Divider', Divider)
+app.component('RadioButton', RadioButton)
 
 app.mount('#app')

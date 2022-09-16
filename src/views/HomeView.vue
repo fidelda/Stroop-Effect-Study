@@ -1,20 +1,25 @@
 <template>
   <main>
-    <TheWelcome />
-    <div class="field col-12 md:col-4">
-      <span class="p-float-label">
-        <InputText id="inputtext" type="text" v-model="first_name" />
-        <label for="inputtext">First Name</label>
-      </span>
-    </div>
-    <div>
-      <Button label="Submit" @click="handleClick"></Button>
-    </div>
+      <div class="card">
+        <div class="flex flex-wrap-reverse md:flex-wrap card-container purple-container" style="max-width: 500px">
+            <div class="flex align-items-center justify-content-center bg-purple-500 font-bold text-white m-2 border-round" style="min-width: 200px; min-height: 100px">
+                <span class="p-float-label">
+                    <InputText id="inputtext" type="text" v-model="test" />
+                    <label for="inputtext">First Name</label>
+                </span>
+            </div>
+            <div class="flex align-items-center justify-content-center bg-purple-500 font-bold text-white m-2 border-round" style="min-width: 200px; min-height: 100px">
+              <Button label="Submit" @click="handleClick"></Button>
+            </div>
+            <div class="flex align-items-center justify-content-center bg-purple-500 font-bold text-white m-2 border-round" style="min-width: 200px; min-height: 100px">3</div>
+        </div>
+      </div>
   </main>
 </template>
 
 <script lang = "ts">
   import { ref, onMounted } from 'vue';
+  import { db } from '@/database/db'
   
   export default {
       setup() {
@@ -24,6 +29,13 @@
           });
           const handleClick = () => {
             console.log(Date.now() - time1.value)
+            const ref = db.ref('users/email');
+            ref.on('value', function (snapshot) {
+              console.log("In Value");
+              console.log(snapshot.val);
+            }, function(error) {
+            console.error(error);
+            });
           };
           const first_name = ref();
           const time1 = ref();
