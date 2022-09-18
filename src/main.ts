@@ -10,8 +10,9 @@ import Checkbox from 'primevue/checkbox'
 import Dialog from 'primevue/dialog'
 import Calendar from 'primevue/calendar'
 import Divider from 'primevue/divider'
-import Password from 'primevue/password'
 import RadioButton from 'primevue/radiobutton';
+import Slider from 'primevue/slider';
+import Dropdown from 'primevue/dropdown';
 
 
 import 'primevue/resources/themes/tailwind-light/theme.css';
@@ -31,5 +32,7 @@ app.component('Dialog', Dialog)
 app.component('Calendar', Calendar)
 app.component('Divider', Divider)
 app.component('RadioButton', RadioButton)
+app.component('Slider', Slider)
+app.component('Dropdown', Dropdown)
 
 app.mount('#app')

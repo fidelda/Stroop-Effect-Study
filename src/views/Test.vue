@@ -1,59 +1,60 @@
 
 <template>
     <div class="form-demo">
-
         <div class="flex justify-content-center">
             <div class="card">
-                <h5 class="text-center">Please fill out this form.</h5>
+                <h3 class="text-center">Please fill out the form to begin with the study.</h3>
                 <form @submit.prevent="handleSubmit(!v$.$invalid)" class="p-fluid">
-                    <div class="field">
-                        <div class="p-float-label">
-                            <InputText id="first_name" v-model="v$.first_name.$model" :class="{'p-invalid':v$.first_name.$invalid && submitted}" />
-                            <label for="first_name" :class="{'p-error':v$.first_name.$invalid && submitted}">First Name*</label>
-                        </div>
-                        <small v-if="(v$.first_name.$invalid && submitted) || v$.first_name.$pending.$response" class="p-error">{{v$.first_name.required.$message.replace('Value', 'First Name')}}</small>
+                    <div class = "field">
+                        <h4 :class="{'p-error':v$.device.$invalid && submitted}">What is your method of input?</h4>
+                        <Dropdown v-model="v$.device.$model" :class="{'p-invalid':v$.device.$invalid && submitted}" :options="devices" optionLabel="label" optionValue="value" placeholder="Select an input" />
                     </div>
-                    <div class="field">
-                        <div class="p-float-label">
-                            <InputText id="last_name" v-model="v$.last_name.$model" :class="{'p-invalid':v$.last_name.$invalid && submitted}" />
-                            <label for="last_name" :class="{'p-error':v$.last_name.$invalid && submitted}">Last Name*</label>
-                        </div>
-                        <small v-if="(v$.last_name.$invalid && submitted) || v$.last_name.$pending.$response" class="p-error">{{v$.last_name.required.$message.replace('Value', 'Last Name')}}</small>
+                    <div class = "field">
+                        <h4 :class="{'p-error':v$.concentration.$invalid && submitted}">
+                            Rate how well this statement applies from 1-4: <br>
+                            "I am in a calm environment with enough light and I am able to concentrate."
+                        </h4>
+                        <Slider v-model="v$.concentration.$model" :class="{'p-invalid':v$.concentration.$invalid && submitted}" id= "concentration-slider" :min="1" :max="4" />
+                        <h4 id="concentration-text" :class="{'p-error':v$.concentration.$invalid && submitted}">Rating: {{numToStatement(concentration)}} </h4>
                     </div>
-                    <div class="field" id="email-field">
-                        <div class="p-float-label p-input-icon-right">
-                            <InputText id="email" v-model="v$.email.$model" :class="{'p-invalid':v$.email.$invalid && submitted}" aria-describedby="email-error"/>
-                            <label for="email" :class="{'p-error':v$.email.$invalid && submitted}">Email*</label>
+                    <div class = "field">
+                        <h4 :class="{'p-error':v$.ageGroup.$invalid && submitted}">Please select your age group:</h4>
+                        <div class="field-radiobutton">
+                            <RadioButton inputId="group1" name="ageGroup" value='1' v-model="v$.ageGroup.$model" :class="{'p-invalid':v$.ageGroup.$invalid && submitted}" />
+                            <label for="group1" :class="{'p-error':v$.ageGroup.$invalid && submitted}">0-17 years</label>
                         </div>
-                        <span v-if="v$.email.$error && submitted">
-                            <span id="email-error" v-for="(error, index) of v$.email.$errors" :key="index">
-                            <small class="p-error">{{error.$message}}</small>
-                            </span>
-                        </span>
-                        <small v-else-if="(v$.email.$invalid && submitted) || v$.email.$pending.$response" class="p-error">{{v$.email.required.$message.replace('Value', 'Email')}}</small>
-                    </div>
-                    <div class="field">
-                        <div class="p-float-label">
-                            <Calendar id="date" v-model="date" :showIcon="true" />
-                            <label for="date">Birthday</label>
+                        <div class="field-radiobutton">
+                            <RadioButton inputId="group2" name="ageGroup" value='2' v-model="v$.ageGroup.$model" :class="{'p-invalid':v$.ageGroup.$invalid && submitted}" />
+                            <label for="group2" :class="{'p-error':v$.ageGroup.$invalid && submitted}">18-23 years</label>
                         </div>
                     </div>
                     <div class = "field">
-                        <h4>Do you have Dyslexia?*</h4>
+                        <h4 :class="{'p-error':v$.dyslexia.$invalid && submitted}">Do you have dyslexia or any other reading disability?</h4>
                         <div class="field-radiobutton">
-                            <RadioButton inputId="yes1" name="dyslexia" value="Yes" v-model="dyslexia" />
-                            <label for="yes1">Yes</label>
+                            <RadioButton inputId="yes1" name="dyslexia" value="Yes"  v-model="v$.dyslexia.$model" :class="{'p-invalid':v$.dyslexia.$invalid && submitted}" />
+                            <label for="yes1" :class="{'p-error':v$.dyslexia.$invalid && submitted}">Yes</label>
                         </div>
                         <div class="field-radiobutton">
-                            <RadioButton inputId="no1" name="dyslexia" value="No" v-model="dyslexia" />
-                            <label for="no1">No</label>
+                            <RadioButton inputId="no1" name="dyslexia" value="No" v-model="v$.dyslexia.$model" :class="{'p-invalid':v$.dyslexia.$invalid && submitted}" />
+                            <label for="no1" :class="{'p-error':v$.dyslexia.$invalid && submitted}">No</label>
+                        </div>
+                    </div>
+                    <div class = "field">
+                        <h4 :class="{'p-error':v$.dyscalculia.$invalid && submitted}">Do you have dyscalculia?</h4>
+                        <div class="field-radiobutton">
+                            <RadioButton inputId="yes2" name="dyscalculia" value="Yes" v-model="v$.dyscalculia.$model" :class="{'p-invalid':v$.dyscalculia.$invalid && submitted}"/>
+                            <label for="yes2" :class="{'p-error':v$.dyscalculia.$invalid && submitted}">Yes</label>
+                        </div>
+                        <div class="field-radiobutton">
+                            <RadioButton inputId="no2" name="dyscalculia" value="No" v-model="v$.dyscalculia.$model" :class="{'p-invalid':v$.dyscalculia.$invalid && submitted}" />
+                            <label for="no2" :class="{'p-error':v$.dyscalculia.$invalid && submitted}">No</label>
                         </div>
                     </div>
                     <div class="field-checkbox">
                         <Checkbox id="accept" name="accept" value="Accept" v-model="v$.accept.$model" :class="{'p-invalid':v$.accept.$invalid && submitted}" />
-                        <label for="accept" :class="{'p-error': v$.accept.$invalid && submitted}">I agree to the terms and conditions*</label>
+                        <label for="accept" :class="{'p-error': v$.accept.$invalid && submitted}">I agree to the terms and conditions</label>
                     </div>
-                    <Button type="submit" label="Submit" class="mt-2" />
+                    <Button type="submit" label="Submit" class="mt-2"></Button>
                 </form>
             </div>
         </div>
@@ -61,53 +62,103 @@
 </template>
 
 <script>
-import { reactive, ref, onMounted } from 'vue';
-import { email, required } from "@vuelidate/validators";
 import { useVuelidate } from "@vuelidate/core";
-import { db } from '@/database/db'
-import { uuid } from 'vue-uuid'; 
+import { required } from '@vuelidate/validators';
+import { useDataStore } from "@/stores/dataStore"
+import { uploadToDatabase } from "@/database/db"
 
 export default {
-    setup () {
-        const state = reactive({
-            first_name: '',
-            last_name: '',
-            email: '',
-            date: null,
+    setup: () => ({ v$: useVuelidate() }),
+    data() {
+        return {
+            uid: '',
+            device: '',
+            concentration: null,
+            ageGroup: '',
             dyslexia: null,
-            accept: null
-        });
-
-        const rules = {
-            first_name: { required },
-            last_name: { required },
-            email: { required, email },
-            dyslexia: { required },
-            accept: { required }
-        };
-
-        const submitted = ref(false);
-        const showMessage = ref(false);
-        const date = ref();
-        const dyslexia = ref();
-
-        const v$ = useVuelidate(rules, state);
-
-        const handleSubmit = (isFormValid) => {
+            dyscalculia: null,
+            accept: null,
+            submitted: false,
+            devices: [
+                {"label": "Mouse", "value": "Mouse"},
+                {"label": "Touchscreen", "value": "Touchscreen"},
+                {"label": "Pen", "value": "Pen"},
+                {"label": "Trackpad", "value": "Trackpad"},
+                {"label": "Other", "value": "Other"}
+            ],
+            numToStatement: (x) => (
+                x == 1 ? 'Very Bad (1)' : 
+                x == 2 ? 'Bad (2)' :
+                x == 3 ? 'Good (3)' : 
+                x == 4 ? 'Very Good (4)' : 
+                ' ' 
+            )
+        }
+    },
+    validations() {
+        return {
+            device: {
+                required
+            },
+            concentration: {
+                required
+            },
+            ageGroup: {
+                required
+            },
+            dyslexia: {
+                required
+            },
+            dyscalculia: {
+                required
+            },
+            accept: {
+                required
+            }
+        }
+    },
+    created() {
+        this.uid = this.gen_uid();
+        console.log(this.uid);
+    },
+    mounted() {
+        
+    },
+    methods: {
+        handleSubmit(isFormValid) {
             this.submitted = true;
-
             if (!isFormValid) {
                 return;
             } else {
-                console.log(uuid.v4());
-                /*db.ref('users/' + uuid.v4()).set({
-                    first_name : this.first_name,
-                    last_name : this.last_name
-                });*/
+                this.storeData();
+                this.$router.push("about");
             }
+        },
+        storeData() {
+            const store = useDataStore();
+            store.uid = this.uid;
+            store.device = this.device;
+            store.concentration = this.concentration;
+            store.ageGroup = Number(this.ageGroup);
+            store.dyslexia = this.dyslexia == 'Yes' ? true : false;
+            store.dyscalculia = this.dyscalculia == 'Yes' ? true : false;
+            uploadToDatabase();
+        },
+        gen_uid() {
+            /*
+            https://pixelprivacy.com/resources/browser-fingerprinting/
+            https://en.wikipedia.org/wiki/Device_fingerprint
+            */
+            var navigator_info = window.navigator;
+            var screen_info = window.screen;
+            var uid = navigator_info.mimeTypes.length;
+            uid += navigator_info.userAgent.replace(/\D+/g, '');
+            uid += navigator_info.plugins.length;
+            uid += screen_info.height || '';
+            uid += screen_info.width || '';
+            uid += screen_info.pixelDepth || '';
+            return uid;
         }
-
-        return { state, v$, handleSubmit, submitted, showMessage, date }
     }
 }
 </script>
@@ -117,6 +168,7 @@ export default {
     .form-demo {
         .card {
             min-width: 450px;
+            max-height: 800px;
             
             label {
                 margin-left: 0.2rem;
@@ -127,9 +179,21 @@ export default {
             form {
                 margin-top: 2rem;
             }
+
+            h4 {
+                margin-bottom: 0.5rem;
+                br {
+                    margin-bottom: 0.25rem;
+                }
+            }
     
             .field {
-                margin-bottom: 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            #concentration-slider {
+                margin-top: 1rem;
+                margin-bottom: 0.5rem;
             }
 
             .field-checkbox {
@@ -140,12 +204,21 @@ export default {
                 margin-top: 0.5rem;
                 padding-right: 1rem;
             }
+
+            #concentration-text {
+                margin-bottom: 2rem;
+                color: #312E81
+            }
         }
     
         @media screen and (max-width: 960px) {
             .card {
                 width: 80%;
             }
+        }
+
+        .text-center {
+            margin-top: 2rem;
         }
     }
     
