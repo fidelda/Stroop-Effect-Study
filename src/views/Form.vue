@@ -135,7 +135,6 @@ components: {
     },
     created() {
       this.uid = uuid.v4();
-      console.log(this.uuid);
     },
     methods: {
         handleSubmit(isFormValid) {
