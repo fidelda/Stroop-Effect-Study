@@ -201,11 +201,14 @@ components: {
 
   .form-selectbutton {
     width: 100%;
-    margin-top: 24px;
+    margin-top: 18px;
   }
 
   .form-selectbutton .p-button {
+    padding: 8px;
     width: 25%;
+    height: 50px;
+    font-size: 14px;
   }
 
   .form-field-quote {
