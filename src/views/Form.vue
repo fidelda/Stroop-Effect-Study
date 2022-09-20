@@ -79,7 +79,7 @@
   import Dropdown from 'primevue/dropdown';
   import SelectButton from 'primevue/selectbutton';
   import RadioButton from 'primevue/radiobutton';
-  import Button from 'primevue/button'
+  import Button from 'primevue/button';
   
   export default {
   name: 'Form',
@@ -111,6 +111,7 @@
             age_group: '',
             dyslexia: '',
             dyscalculia: '',
+            study_group: null,
             submitted: false
         }
     },
@@ -133,15 +134,14 @@
             }
         }
     },
-    created() {
-      this.uid = uuid.v4();
-    },
     methods: {
         handleSubmit(isFormValid) {
             this.submitted = true;
             if (!isFormValid) {
                 return;
             } else {
+                this.uid = uuid.v4();
+                this.study_group = Math.floor(Math.random() * 2) + 1;
                 this.storeData();
                 this.$router.push("about");
             }
@@ -154,14 +154,9 @@
                 Number(this.concentration.value),
                 Number(this.age_group),
                 this.dyslexia    == "Yes" ? true : false,
-                this.dyscalculia == "Yes" ? true : false
+                this.dyscalculia == "Yes" ? true : false,
+                this.study_group
             );
-            console.log(store.user.uid);
-            console.log(store.user.device);
-            console.log(store.user.concentration);
-            console.log(store.user.age_group);
-            console.log(store.user.dyslexia);
-            console.log(store.user.dyscalculia);
             writeUserDataFromStore();
         }
     }

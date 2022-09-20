@@ -15,24 +15,14 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 const db = app.database();
 
-function writeUserData(uid:string, device:string, concentration:number, age_group:number, dyslexia:boolean, dyscalculia:boolean) {
-  db.ref('users/' + uid).set({
-    device: device,
-    concentration: concentration,
-    age_group: age_group,
-    dyslexia: dyslexia,
-    dyscalculia: dyscalculia
-  });
-}
-
 export function writeUserDataFromStore() {
   const store = useUserStore();
-  writeUserData(
-    store.user.uid,
-    store.user.device,
-    store.user.concentration,
-    store.user.age_group,
-    store.user.dyscalculia,
-    store.user.dyscalculia
-  )
+  db.ref('users/' + store.user.uid,).set({
+    device: store.user.device,
+    concentration: store.user.concentration,
+    age_group: store.user.age_group,
+    dyslexia: store.user.dyslexia,
+    dyscalculia: store.user.dyscalculia,
+    study_group: store.user.study_group
+  });
 }
