@@ -72,8 +72,8 @@
   <script>
   import { useVuelidate } from "@vuelidate/core";
   import { required } from '@vuelidate/validators';
-  import { useUserStore } from "../stores/users";
-  import { writeUserDataFromStore } from "../database/db";
+  import { useUserStore } from "@/stores/users";
+  import { writeUserDataFromStore } from "@/database/db";
   import { uuid } from 'vue-uuid';
   
   import Dropdown from 'primevue/dropdown';

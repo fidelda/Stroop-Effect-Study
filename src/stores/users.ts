@@ -1,4 +1,4 @@
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useUserStore = defineStore('user', () => {
@@ -11,7 +11,7 @@ export const useUserStore = defineStore('user', () => {
     dyscalculia: false
   });
 
-  const insertFormValues = (f_uid, f_device, f_conentration, f_age_group, f_dyslexia, f_dyscalculia) => {
+  const insertFormValues = (f_uid:string, f_device:string, f_conentration:number, f_age_group:number, f_dyslexia:boolean, f_dyscalculia:boolean) => {
     user.value.uid = f_uid;
     user.value.device = f_device;
     user.value.concentration = f_conentration;

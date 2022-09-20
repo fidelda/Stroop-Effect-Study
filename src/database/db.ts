@@ -1,6 +1,6 @@
-import { initializeApp } from 'firebase/app';
-import { getDatabase, ref, set } from "firebase/database";
-import { useUserStore } from '../stores/users';
+import firebase from 'firebase/app';
+import "firebase/database";
+import { useUserStore } from '@/stores/users';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDP-RGM2GoZyuKpQNKCxB-FIOfJVDMSMfo",
@@ -12,11 +12,11 @@ const firebaseConfig = {
     appId: "1:178995537344:web:947b048cd023d737d49425"
 };
 
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
+const app = firebase.initializeApp(firebaseConfig);
+const db = app.database();
 
-function writeUserData(uid, device, concentration, age_group, dyslexia, dyscalculia) {
-  set(ref(db, 'users/' + uid), {
+function writeUserData(uid:string, device:string, concentration:number, age_group:number, dyslexia:boolean, dyscalculia:boolean) {
+  db.ref('users/' + uid).set({
     device: device,
     concentration: concentration,
     age_group: age_group,

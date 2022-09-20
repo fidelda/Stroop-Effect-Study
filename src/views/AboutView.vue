@@ -1,6 +1,7 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <p>Thank you for participating in our study project! This experiment is conducted as a part of the
+      course Human Cognition in Human-Computer Interaction at Stockholm Universitet.</p>
   </div>
 </template>
 
