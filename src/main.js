@@ -16,4 +16,4 @@ app.use(createPinia());
 app.use(router);
 app.use(PrimeVue);
 
-app.mount('#app');
+app.mount('#app')

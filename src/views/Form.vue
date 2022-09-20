@@ -67,29 +67,29 @@
             </div>
         </form>
     </main>
-</template>
-
-<script>
-import { useVuelidate } from "@vuelidate/core";
-import { required } from '@vuelidate/validators';
-import { useDataStore } from "@/stores/dataStore";
-import { uploadToDatabase } from "@/database/db";
-import { uuid } from 'vue-uuid';
- 
-import Dropdown from 'primevue/dropdown';
-import SelectButton from 'primevue/selectbutton';
-import RadioButton from 'primevue/radiobutton';
-import Button from 'primevue/button'
-
-export default {
-name: 'Form',
-components: {
+  </template>
+  
+  <script>
+  import { useVuelidate } from "@vuelidate/core";
+  import { required } from '@vuelidate/validators';
+  import { useUserStore } from "../stores/users";
+  import { writeUserDataFromStore } from "../database/db";
+  import { uuid } from 'vue-uuid';
+  
+  import Dropdown from 'primevue/dropdown';
+  import SelectButton from 'primevue/selectbutton';
+  import RadioButton from 'primevue/radiobutton';
+  import Button from 'primevue/button'
+  
+  export default {
+  name: 'Form',
+  components: {
     Dropdown,
     SelectButton,
     RadioButton,
     Button
     },
-    setup: () => ({ v$: useVuelidate() }),
+    setup: () => ({ v$: useVuelidate(), store: useUserStore() }),
     data() {
         return {
             uid: '',
@@ -147,21 +147,29 @@ components: {
             }
         },
         storeData() {
-            const store = useDataStore();
-            store.uid = this.uid;
-            store.device = this.device;
-            store.concentration = this.concentration.value;
-            store.age_group = Number(this.age_group);
-            store.dyslexia = this.dyslexia == 'Yes' ? true : false;
-            store.dyscalculia = this.dyscalculia == 'Yes' ? true : false;
-            uploadToDatabase();
+            const store = useUserStore();
+            store.insertFormValues(
+                this.uid,
+                this.device,
+                Number(this.concentration.value),
+                Number(this.age_group),
+                this.dyslexia    == "Yes" ? true : false,
+                this.dyscalculia == "Yes" ? true : false
+            );
+            console.log(store.user.uid);
+            console.log(store.user.device);
+            console.log(store.user.concentration);
+            console.log(store.user.age_group);
+            console.log(store.user.dyslexia);
+            console.log(store.user.dyscalculia);
+            writeUserDataFromStore();
         }
     }
-}
-</script>
-
-<style>
-
+  }
+  </script>
+  
+  <style>
+  
   html {
     background-color: #fbfbfb;
   }
@@ -170,7 +178,7 @@ components: {
     max-width: 600px;
     margin: 0 auto;
   }
-
+  
   .page-title {
     font-family: 'Montserrat', sans-serif;
     font-size: 34px;
@@ -179,19 +187,19 @@ components: {
     margin-top: 10px;
     margin-bottom: 0px;
   }
-
+  
   .subtitle {
     font-size: 1rem;
     font-weight: 600;
     color: #b1b1b1;    
     margin-top: 5px;
   }
-
+  
   .form-wrapper form-field-text{
     margin-top: 16px;
     margin-bottom: 16px;
   }
-
+  
   .form-field {
     border: 1px solid #f6f6f6;
     box-shadow: 2px 2px 8px 0 #cfcfcf;
@@ -203,51 +211,51 @@ components: {
     padding-bottom: 16px;
     margin-bottom: 16px;
   }
-
+  
   .form-field-content-wrapper {
     flex: 1;
   }
-
+  
   .form-dropdown {
     width: 100%;
   }
-
+  
   .form-selectbutton {
     width: 100%;
     margin-top: 18px;
   }
-
+  
   .form-selectbutton .p-button {
     padding: 8px;
     width: 25%;
     height: 50px;
     font-size: 14px;
   }
-
+  
   .form-field-quote {
     font-weight: bold;
   }
-
+  
   .form-field-radiobutton-text {
     margin-top: 16px;
     margin-bottom: 8px;
   }
-
+  
   .form-field-radiobutton-wrapper {
     line-height: 100%;
     margin-bottom: 5px;
   }
-
+  
   .radiobutton-text {
     margin-left: 5px;
   }
-
+  
   .form-button-wrapper {
     display: flex;
   }
-
+  
   .form-button-wrapper .mt-2 { 
     width: 100%;
   }
-
-</style>
+  
+  </style>
