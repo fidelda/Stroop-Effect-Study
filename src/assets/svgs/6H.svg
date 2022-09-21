@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="720"
+   height="720"
+   viewBox="0 0 190.5 190.5"
+   version="1.1"
+   id="svg5"
+   sodipodi:docname="6H.svg"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="true"
+     inkscape:zoom="1.0255231"
+     inkscape:cx="342.75192"
+     inkscape:cy="395.89553"
+     inkscape:window-width="1520"
+     inkscape:window-height="1030"
+     inkscape:window-x="10"
+     inkscape:window-y="1"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid9"
+       spacingx="19.05"
+       spacingy="19.05" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2">
+    <rect
+       x="67.282738"
+       y="190.14687"
+       width="570.4406"
+       height="346.16481"
+       id="rect2264" />
+  </defs>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       id="path2874"
+       style="font-size:22.5778px;font-family:'Arial Nova';-inkscape-font-specification:'Arial Nova';stroke-width:0.264583"
+       d="M 39.940198 74.817139 L 39.940198 90.978943 L 42.089937 90.978943 L 42.089937 83.372172 L 50.027437 83.372172 L 50.027437 90.978943 L 52.177177 90.978943 L 52.177177 74.817139 L 50.027437 74.817139 L 50.027437 81.453943 L 42.089937 81.453943 L 42.089937 74.817139 L 39.940198 74.817139 z M 91.526713 75.08844 L 91.526713 91.250244 L 93.676453 91.250244 L 93.676453 83.643473 L 101.61395 83.643473 L 101.61395 91.250244 L 103.76369 91.250244 L 103.76369 75.08844 L 101.61395 75.08844 L 101.61395 81.725244 L 93.676453 81.725244 L 93.676453 75.08844 L 91.526713 75.08844 z M 139.06386 75.08844 L 139.06386 91.250244 L 141.2136 91.250244 L 141.2136 83.643473 L 149.1511 83.643473 L 149.1511 91.250244 L 151.30084 91.250244 L 151.30084 75.08844 L 149.1511 75.08844 L 149.1511 81.725244 L 141.2136 81.725244 L 141.2136 75.08844 L 139.06386 75.08844 z M 39.515417 99.370679 L 39.515417 115.53248 L 41.665157 115.53248 L 41.665157 107.92571 L 49.602657 107.92571 L 49.602657 115.53248 L 51.752397 115.53248 L 51.752397 99.370679 L 49.602657 99.370679 L 49.602657 106.00748 L 41.665157 106.00748 L 41.665157 99.370679 L 39.515417 99.370679 z M 91.101933 99.64198 L 91.101933 115.80327 L 93.251672 115.80327 L 93.251672 108.1965 L 101.18917 108.1965 L 101.18917 115.80327 L 103.33891 115.80327 L 103.33891 99.64198 L 101.18917 99.64198 L 101.18917 106.27827 L 93.251672 106.27827 L 93.251672 99.64198 L 91.101933 99.64198 z M 138.6396 99.64198 L 138.6396 115.80327 L 140.78934 115.80327 L 140.78934 108.1965 L 148.72684 108.1965 L 148.72684 115.80327 L 150.87658 115.80327 L 150.87658 99.64198 L 148.72684 99.64198 L 148.72684 106.27827 L 140.78934 106.27827 L 140.78934 99.64198 L 138.6396 99.64198 z " />
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text2262"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:85.3333px;font-family:'Arial Nova';-inkscape-font-specification:'Arial Nova, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;shape-inside:url(#rect2264);display:inline;fill:#000000" />
+  </g>
+</svg>

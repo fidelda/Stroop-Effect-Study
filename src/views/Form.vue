@@ -82,12 +82,12 @@
   import Button from 'primevue/button';
   
   export default {
-  name: 'Form',
-  components: {
-    Dropdown,
-    SelectButton,
-    RadioButton,
-    Button
+    name: 'Form',
+    components: {
+        Dropdown,
+        SelectButton,
+        RadioButton,
+        Button
     },
     setup: () => ({ v$: useVuelidate(), store: useUserStore() }),
     data() {
@@ -157,7 +157,7 @@
                 this.dyscalculia == "Yes" ? true : false,
                 this.study_group
             );
-            writeUserDataFromStore();
+            //writeUserDataFromStore();
         }
     }
   }

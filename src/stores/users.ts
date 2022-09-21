@@ -9,7 +9,10 @@ export const useUserStore = defineStore('user', () => {
     age_group: 0,
     dyslexia: false,
     dyscalculia: false,
-    study_group: 0
+    study_group: 0,
+    letters: new Map(),
+    digits: [{}],
+    words: [{}]
   });
 
   const insertFormValues = (
@@ -28,21 +31,30 @@ export const useUserStore = defineStore('user', () => {
       user.value.dyslexia = f_dyslexia;
       user.value.dyscalculia = f_dyscalculia;
       user.value.study_group = f_study_group
-
   };
 
   const uid = () =>  {
     return user.value.uid;
-  }
+  };
 
   const study_group = () =>  {
     return user.value.study_group;
+  };
+
+  const insertLetterData = (id:number, letterdata:any) => {
+    user.value.letters.set(id, letterdata);
+  }
+
+  const getLetterDataById = (id:number) => {
+    return user.value.letters.get(id);
   }
 
   return {
     user,
     insertFormValues,
     uid,
-    study_group
+    study_group,
+    insertLetterData,
+    getLetterDataById
   }
 });

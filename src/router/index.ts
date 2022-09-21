@@ -14,9 +14,19 @@ const router = createRouter({
       component: () => import('@/views/About.vue')
     },
     {
-      path: '/example',
-      name: 'example',
-      component: () => import('@/views/Example.vue')
+      path: '/instructions',
+      name: 'instructions',
+      component: () => import('@/views/Instructions.vue')
+    },
+    {
+      path: '/letters0',
+      name: 'letters0',
+      component: () => import('@/views/studypages/letters/Letters0.vue')
+    },
+    {
+      path: '/endscreen',
+      name: 'endscreen',
+      component: () => import('@/views/Endscreen.vue')
     },
   ]
 })

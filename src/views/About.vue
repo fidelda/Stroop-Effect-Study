@@ -64,7 +64,7 @@
         if (!isFormValid) {
           return;
         } else {
-          this.$router.push("terms");
+          this.$router.push("instructions");
         }
       }
     }
