@@ -80,12 +80,17 @@
     }
   
     html p {
-      font-size: 18px;
+        font-size: 18px;
+        margin-top: 16px;
     }
-      
+    
     .main-wrapper {
-      max-width: 600px;
-      margin: 32px auto;
+        max-width: 600px;
+        margin: 16px auto;
+    }
+  
+    .main-wrapper h1 {
+        margin: 0;
     }
   
     .button-wrapper {

@@ -2,6 +2,7 @@
   <main class="main-wrapper">
     <form @submit.prevent="handleSubmit(!v$.$invalid)">
       <div class="about-text-wrapper">
+        <h1>Welcome</h1>
         <p class="about-text">
           Thank you for participating in our study project! This experiment is conducted as a part of the
           course Human Cognition in Human-Computer Interaction at Stockholm Universitet.
@@ -21,7 +22,7 @@
         </p>
         <div class="terms-checkbox-wrapper">
             <Checkbox id="accept" name="accept" value="Accept" v-model="v$.accept.$model" :class="{'p-invalid':v$.accept.$invalid && submitted}" />
-            <label for="accept" class="checkbox-label" :class="{'p-error': v$.accept.$invalid && submitted}">I agree to the terms and conditions*</label>
+            <label for="accept" class="checkbox-label" :class="{'p-error': v$.accept.$invalid && submitted}">I agree to the terms and conditions</label>
         </div>
       </div>
       <div class="button-wrapper">
@@ -78,12 +79,17 @@
 
   html p {
     font-size: 18px;
+    margin-top: 16px;
   }
     
   .main-wrapper {
     max-width: 600px;
-    margin: 32px auto;
+    margin: 16px auto;
   }
+  
+  .main-wrapper h1 {
+      margin: 0;
+    }
 
   .button-wrapper {
     display: flex;
@@ -97,6 +103,7 @@
   }
 
   .terms-wrapper {
+    margin-top: 20px;
     margin-bottom: 32px;
   }
 

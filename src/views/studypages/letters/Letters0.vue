@@ -1,6 +1,6 @@
 <template>
     <main class="main-wrapper">
-        <h2 class="page-title">Choose the image with the most elements</h2>
+        <h3 class="page-title">Choose the image with the most elements</h3>
         <div class="card">
             <div class="flex flex-wrap card-container justify-content-center" style="max-width: 700px;">
                 <div class="image-box">
