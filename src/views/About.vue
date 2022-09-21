@@ -11,22 +11,19 @@
       <div class="terms-wrapper">
         <h1>Terms and Conditions</h1>
         <p>
-          You volunteer to take participate in this study. As a participant, you can cancel your
-          participation at any point during the experiment. If you do that, we will not use your data for
-          the evaluation. We do not store sensitive personal data like personal number, date of birth or
-          names. Your input is stored anonymously. You must be at least 18 years of age to participate
-          in this study. <br> <br>
-          In this study you are first asked to answer some questions. Then you are shown an
-          introduction including an example of the experiment. After the experiment you are asked to
-          answer another short question. In total, the experiment takes less than XX minutes.
+          You volunteer to participate in this study. By clicking on the "Accept"-button at the bottom of the page, you give your consent to use your answers in this study about human cognition. Your input is stored anonymously, therefore it is not possible to delete your data after you complete the experiment. The data collected is not personal data as you, as a participant, cannot be identified directly or indirectly.
+          You can cancel your participation at any point during the experiment. No data will be stored until you reach the end of the experiment.
+          You must be at least 18 years of age to participate in this study. <br> <br>
+          You will be asked some questions. Then you are shown an introduction including an example of the experiment. After the experiment you are asked to answer another short question.
+          The experiment is designed to be completed in less than X minutes.
         </p>
         <div class="terms-checkbox-wrapper">
             <Checkbox id="accept" name="accept" value="Accept" v-model="v$.accept.$model" :class="{'p-invalid':v$.accept.$invalid && submitted}" />
-            <label for="accept" class="checkbox-label" :class="{'p-error': v$.accept.$invalid && submitted}">I agree to the terms and conditions</label>
+            <label for="accept" class="checkbox-label" :class="{'p-error': v$.accept.$invalid && submitted}">I agree to the terms and conditions*</label>
         </div>
       </div>
       <div class="button-wrapper">
-        <Button type="submit" label="Next" class="mt-2"></Button>
+        <Button type="submit" label="Accept" class="mt-2"></Button>
       </div>
     </form>
   </main>

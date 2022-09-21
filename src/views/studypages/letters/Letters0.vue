@@ -1,6 +1,5 @@
 <template>
     <main class="main-wrapper">
-        <h3 class="page-title">Choose the image with the most elements</h3>
         <div class="card">
             <div class="flex flex-wrap card-container justify-content-center" style="max-width: 700px;">
                 <div class="image-box">
@@ -27,11 +26,20 @@ export default {
       return {
         correct_img: 2,
         start_timestamp: null,
-        end_timestamp: null
+        end_timestamp: null,
+        images: [
+            "@/assets/svgs/2W.svg",
+            "@/assets/svgs/7P.svg",
+        ],
+        index: 0,
+        cur_img: "2W"
       }
     },
     created() {
         this.start_timestamp = Date.now();
+    },
+    mounted() {
+        
     },
     methods: {
       handleClick(imageNumber) {
@@ -44,13 +52,18 @@ export default {
         console.log(is_user_right);
         console.log(time);
 
-        this.store.insertLetterData(0, {correct_img: this.correct_img, is_user_right: is_user_right, time: time});
+        this.store.insertLetterData(0, {correct_img: this.correct_img, clicked_img: imageNumber, is_user_right: is_user_right, time: time});
         console.log(toRaw(this.store.getLetterDataById(0)));
 
-        writeUserDataFromStore();
+        //writeUserDataFromStore();
 
-        this.$router.push("endscreen");
-      }
+        this.$router.push("question");
+      },
+      /*makeImage() {
+        var img = document.createElement('img');
+        img.src = this.images[this.index];
+        document.getElementById('study-image-1').appendChild(img);
+      }*/
     }
   }
 

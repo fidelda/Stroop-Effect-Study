@@ -24,6 +24,11 @@ const router = createRouter({
       component: () => import('@/views/studypages/letters/Letters0.vue')
     },
     {
+      path: '/question',
+      name: 'question',
+      component: () => import('@/views/Question.vue')
+    },
+    {
       path: '/endscreen',
       name: 'endscreen',
       component: () => import('@/views/Endscreen.vue')

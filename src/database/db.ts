@@ -17,9 +17,10 @@ const db = app.database();
 
 export function writeUserDataFromStore() {
   const store = useUserStore();
-  db.ref('users/' + store.user.uid).set({
+  db.ref('users/' + store.user.uid + '/user_data').set({
     device: store.user.device,
-    concentration: store.user.concentration,
+    concentration_before: store.user.concentration_before,
+    concentration_after: store.user.concentration_after,
     age_group: store.user.age_group,
     dyslexia: store.user.dyslexia,
     dyscalculia: store.user.dyscalculia,
@@ -30,6 +31,7 @@ export function writeUserDataFromStore() {
     const letterData = letters.get(i);
     db.ref('users/' + store.user.uid + '/letters/letter_id_' + i).set({
       correct_img: letterData.correct_img,
+      clicked_img: letterData.clicked_img,
       is_user_right: letterData.is_user_right,
       time: letterData.time
     });

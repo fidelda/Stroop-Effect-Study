@@ -16,15 +16,15 @@
         <div class="multiple-checkbox-wrapper">
             <div class="checkbox-wrapper">
                 <Checkbox id="read_accept" name="read_accept" value="Read_accept" v-model="v$.read_accept.$model" :class="{'p-invalid':v$.read_accept.$invalid && submitted}" />
-                <label for="read_accept" class="checkbox-label" :class="{'p-error': v$.read_accept.$invalid && submitted}">I can read the examples</label>
+                <label for="read_accept" class="checkbox-label" :class="{'p-error': v$.read_accept.$invalid && submitted}">I can read the examples*</label>
             </div>
             <div class="checkbox-wrapper">
                 <Checkbox id="understand_accept" name="understand_accept" value="Understand_accept" v-model="v$.understand_accept.$model" :class="{'p-invalid':v$.understand_accept.$invalid && submitted}" />
-                <label for="understand_accept" class="checkbox-label" :class="{'p-error': v$.understand_accept.$invalid && submitted}">I understand what to do and want to continue</label>
+                <label for="understand_accept" class="checkbox-label" :class="{'p-error': v$.understand_accept.$invalid && submitted}">I understand what to do and want to continue*</label>
             </div>
         </div>
         <div class="button-wrapper">
-          <Button type="submit" label="Next" class="mt-2"></Button>
+          <Button type="submit" label="Start" class="mt-2"></Button>
         </div>
       </form>
     </main>

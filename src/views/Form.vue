@@ -5,7 +5,7 @@
         <form class="form-wrapper" @submit.prevent="handleSubmit(!v$.$invalid)">
             <div class ="form-field" :class="{'p-error':v$.device.$invalid && submitted}">
                 <div class="form-field-content-wrapper">
-                    <p class="form-field-text">What is your method of input?</p>
+                    <p class="form-field-text">What is your method of input?*</p>
                     <Dropdown class="form-dropdown" v-model="v$.device.$model"
                     :options="devices" optionLabel="label" optionValue="value" 
                     autoWidth="false" placeholder="Select an input" />
@@ -13,7 +13,7 @@
             </div>
             <div class="form-field" :class="{'p-error':v$.concentration.$invalid && submitted}">
                 <div class="form-field-content-wrapper">
-                    <p class="form-field-text">Rate from 1-4 how well this statement applies to you:</p>
+                    <p class="form-field-text">Rate from 1-4 how well this statement applies to you:*</p>
                     <p class="form-field-quote">"I am in a calm environment with enough light and I am able to concentrate."</p>
                     <SelectButton class="form-selectbutton" v-model="v$.concentration.$model" :options="concentrationOptions"
                     optionLabel="name" dataKey="value" aria-labelledby="single"/>
@@ -21,7 +21,7 @@
             </div>
             <div class="form-field" :class="{'p-error':v$.age_group.$invalid && submitted}">
                 <div class="form-field-content-wrapper">
-                    <p class="form-field-radiobutton-text">Please select your age group:</p>
+                    <p class="form-field-radiobutton-text">Please select your age group:*</p>
                     <div class="form-field-radiobutton-wrapper">
                         <RadioButton class="form-radiobutton" inputId="group1" name="age_group" value="1" v-model="v$.age_group.$model"/>
                         <label class="radiobutton-text" for="group1">18 - 35</label>
@@ -38,7 +38,7 @@
             </div>
             <div class="form-field" :class="{'p-error':v$.dyslexia.$invalid && submitted}">
                 <div class="form-field-content-wrapper">
-                    <p class="form-field-radiobutton-text">Do you have dyslexia or any other reading disability?</p>
+                    <p class="form-field-radiobutton-text">Do you have dyslexia or any other reading disability?*</p>
                     <div class="form-field-radiobutton-wrapper">
                         <RadioButton class="form-radiobutton" inputId="yes1" name="dyslexia" value="Yes" v-model="v$.dyslexia.$model"/>
                         <label class="radiobutton-text" for="yes1">Yes</label>
@@ -51,7 +51,7 @@
             </div>
             <div class="form-field" :class="{'p-error':v$.dyscalculia.$invalid && submitted}">
                 <div class="form-field-content-wrapper">
-                    <p class="form-field-radiobutton-text">Do you have dyscalculia?</p>
+                    <p class="form-field-radiobutton-text">Do you have dyscalculia?*</p>
                     <div class="form-field-radiobutton-wrapper">
                         <RadioButton class="form-radiobutton" inputId="yes2" name="dyscalculia" value="Yes" v-model="v$.dyscalculia.$model"/>
                         <label class="radiobutton-text" for="yes2">Yes</label>
@@ -63,7 +63,7 @@
                 </div>
             </div>
             <div class="form-button-wrapper">  
-                <Button type="submit" label="Submit" class="mt-2"></Button>
+                <Button type="submit" label="Next" class="mt-2"></Button>
             </div>
         </form>
     </main>
@@ -73,7 +73,6 @@
   import { useVuelidate } from "@vuelidate/core";
   import { required } from '@vuelidate/validators';
   import { useUserStore } from "@/stores/users";
-  import { writeUserDataFromStore } from "@/database/db";
   import { uuid } from 'vue-uuid';
   
   import Dropdown from 'primevue/dropdown';
@@ -147,8 +146,7 @@
             }
         },
         storeData() {
-            const store = useUserStore();
-            store.insertFormValues(
+            this.store.insertFormValues(
                 this.uid,
                 this.device,
                 Number(this.concentration.value),
@@ -157,7 +155,6 @@
                 this.dyscalculia == "Yes" ? true : false,
                 this.study_group
             );
-            //writeUserDataFromStore();
         }
     }
   }
@@ -188,11 +185,6 @@
     font-weight: 600;
     color: #b1b1b1;    
     margin-top: 5px;
-  }
-  
-  .form-wrapper form-field-text{
-    margin-top: 16px;
-    margin-bottom: 16px;
   }
   
   .form-field {
