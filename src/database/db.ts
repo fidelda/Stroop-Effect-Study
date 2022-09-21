@@ -17,6 +17,11 @@ const db = app.database();
 
 export function writeUserDataFromStore() {
   const store = useUserStore();
+
+  if(store.user.uid == '') {
+    return;
+  }
+
   db.ref('users/' + store.user.uid + '/user_data').set({
     device: store.user.device,
     concentration_before: store.user.concentration_before,
@@ -26,6 +31,7 @@ export function writeUserDataFromStore() {
     dyscalculia: store.user.dyscalculia,
     study_group: store.user.study_group
   });
+  
   const letters = store.user.letters;
   for (let i = 0; i < letters.size; i++) {
     const letterData = letters.get(i);

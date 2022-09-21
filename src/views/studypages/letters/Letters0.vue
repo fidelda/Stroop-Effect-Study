@@ -3,10 +3,10 @@
         <div class="card">
             <div class="flex flex-wrap card-container justify-content-center" style="max-width: 700px;">
                 <div class="image-box">
-                    <img src="@/assets/svgs/2W.svg" class="study-image" @click="handleClick(1)">
+                    <img :src="`${images[index].first}`" class="study-image" @click="handleClick(1)">
                 </div>
                 <div class="image-box">
-                    <img src="@/assets/svgs/3G.svg" class="study-image" @click="handleClick(2)">
+                    <img :src="`${images[index].second}`" class="study-image" @click="handleClick(2)">
                 </div>
             </div>
         </div>
@@ -17,53 +17,47 @@
 import "/node_modules/primeflex/primeflex.css";
 import { writeUserDataFromStore } from "@/database/db";
 import { useUserStore } from "@/stores/users";
-import { toRaw } from 'vue';
+
+//SVG import-----------------------------------
+import twoW from "@/assets/svgs/2W.svg";
+import threeG from "@/assets/svgs/3G.svg";
+
+import sevenP from "@/assets/svgs/7P.svg";
+import fiveS from "@/assets/svgs/5S.svg";
+//---------------------------------------------
 
 export default {
     name: 'Letters1',
     setup: () => ({ store: useUserStore() }),
     data() {
       return {
-        correct_img: 2,
         start_timestamp: null,
-        end_timestamp: null,
         images: [
-            "@/assets/svgs/2W.svg",
-            "@/assets/svgs/7P.svg",
+            {first: twoW, second: threeG, correct_img: 2},
+            {first: sevenP, second: fiveS, correct_img: 1},
         ],
-        index: 0,
-        cur_img: "2W"
+        index: 0
       }
     },
     created() {
         this.start_timestamp = Date.now();
     },
-    mounted() {
-        
-    },
     methods: {
-      handleClick(imageNumber) {
-        this.end_timestamp = Date.now();
+      handleClick(clicked_img) {
+        const time = Date.now() - this.start_timestamp;
+        const correct_img = this.images[this.index].correct_img;
+        const is_user_right = clicked_img == correct_img;
+        
+        this.store.insertLetterData(this.index, {correct_img: correct_img, clicked_img: clicked_img, is_user_right: is_user_right, time: time});
 
-        const is_user_right = imageNumber == this.correct_img ? true : false;
-        const time = this.end_timestamp - this.start_timestamp;
-
-        console.log(this.correct_img);
-        console.log(is_user_right);
-        console.log(time);
-
-        this.store.insertLetterData(0, {correct_img: this.correct_img, clicked_img: imageNumber, is_user_right: is_user_right, time: time});
-        console.log(toRaw(this.store.getLetterDataById(0)));
-
-        //writeUserDataFromStore();
-
-        this.$router.push("question");
-      },
-      /*makeImage() {
-        var img = document.createElement('img');
-        img.src = this.images[this.index];
-        document.getElementById('study-image-1').appendChild(img);
-      }*/
+        if(this.index < this.images.length - 1) {
+            this.index++;
+            this.start_timestamp = Date.now();
+        } else {
+            writeUserDataFromStore();
+            this.$router.push("question");
+        }
+      }
     }
   }
 

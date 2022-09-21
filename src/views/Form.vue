@@ -151,8 +151,8 @@
                 this.device,
                 Number(this.concentration.value),
                 Number(this.age_group),
-                this.dyslexia    == "Yes" ? true : false,
-                this.dyscalculia == "Yes" ? true : false,
+                this.dyslexia == "Yes",
+                this.dyscalculia == "Yes",
                 this.study_group
             );
         }
