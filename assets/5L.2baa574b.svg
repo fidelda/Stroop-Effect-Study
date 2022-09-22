@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="720"
+   height="720"
+   viewBox="0 0 190.5 190.5"
+   version="1.1"
+   id="svg5"
+   sodipodi:docname="5L.svg"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="true"
+     inkscape:zoom="1.0255231"
+     inkscape:cx="377.85594"
+     inkscape:cy="365.66704"
+     inkscape:window-width="1520"
+     inkscape:window-height="1030"
+     inkscape:window-x="10"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid9"
+       spacingx="19.05"
+       spacingy="19.05" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       id="path3391"
+       style="font-size:22.5778px;font-family:'Arial Nova';-inkscape-font-specification:'Arial Nova';stroke-width:0.264583"
+       d="M 40.587703 75.851701 L 40.587703 92.013505 L 50.696647 92.013505 L 50.696647 90.095276 L 42.726074 90.095276 L 42.726074 75.851701 L 40.587703 75.851701 z M 92.174219 76.122485 L 92.174219 92.28429 L 102.28316 92.28429 L 102.28316 90.36606 L 94.31259 90.36606 L 94.31259 76.122485 L 92.174219 76.122485 z M 139.71137 76.122485 L 139.71137 92.28429 L 149.82083 92.28429 L 149.82083 90.36606 L 141.85026 90.36606 L 141.85026 76.122485 L 139.71137 76.122485 z M 65.250281 99.824398 L 65.250281 115.9862 L 75.359224 115.9862 L 75.359224 114.06797 L 67.388652 114.06797 L 67.388652 99.824398 L 65.250281 99.824398 z M 116.15157 99.837317 L 116.15157 115.99912 L 126.26103 115.99912 L 126.26103 114.08089 L 118.29045 114.08089 L 118.29045 99.837317 L 116.15157 99.837317 z " />
+  </g>
+</svg>
