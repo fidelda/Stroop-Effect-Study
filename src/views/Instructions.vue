@@ -6,8 +6,8 @@
           <p>
             The goal for you as a participant is to answer the following tasks as quickly and correctly as possible.
             Your reaction time and accuracy will be measured. The experiment contains 32 trials. <br> <br>
-            You have to choose between two pictures consisting of either letters or numbers. Depending on the learning group,
-            the numbers can be represented as digits or as words. Your group will be randomly selected during the experiment. 
+            You have to choose between two pictures consisting of either letters or numbers. The numbers are represented
+            to you either as digits or as words, depending on the study group. Your group will be randomly selected during the experiment. 
             For each test, click the image that you think contains the most items. Below is an example of each type of study. 
             The correct answer is outlined.
           </p>
@@ -108,6 +108,7 @@
   
     .instructions-wrapper {
       margin-bottom: 24px;
+      text-align:justify;
     }
 
     .multiple-checkbox-wrapper {

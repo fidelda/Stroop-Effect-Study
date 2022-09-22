@@ -82,6 +82,7 @@
   .main-wrapper {
     max-width: 600px;
     margin: 16px auto;
+    text-align:justify;
   }
   
   .main-wrapper h1 {

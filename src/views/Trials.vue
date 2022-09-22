@@ -17,6 +17,23 @@
 import "/node_modules/primeflex/primeflex.css";
 import { writeUserDataFromStore } from "@/database/db";
 import { useUserStore } from "@/stores/users";
+import { toRaw } from "vue";
+
+import {
+    twoW, threeG, sevenP, fiveS, fourH, threeD, sevenK,
+    eightE, fiveH, threeW, eightJ, nineA, fiveV, threeS,
+    eightP, nineV, sixT, sevenC, threeB, sixH, fourF,
+    sixX, fiveL, fourD, fourR, sixN, sixG, eightK,
+    sevenH, fourA, sixJ,fiveW
+} from "@/components/LetterComponents.vue";
+
+import {
+    two5, three4
+} from "@/components/DigitComponents.vue";
+
+import {
+    twoFive, threeFour
+} from "@/components/WordComponents.vue";
 
 export default {
     name: 'Trials',
@@ -45,8 +62,12 @@ export default {
             {first: sevenH, second: fourA,  correct_img: 1},
             {first: sixJ,   second: fiveW,  correct_img: 1}
         ],
-        digits: [],
-        words: [],
+        digits: [
+            {first: two5,   second: three4,  correct_img: 2}
+        ],
+        words: [
+            {first: twoFive,   second: threeFour,  correct_img: 2}
+        ],
         index: 0,
         round2: false
       }
@@ -66,13 +87,9 @@ export default {
             this.index++;
             this.start_timestamp = Date.now();
         } else if (!this.round2) {
+            const study_group = this.store.user.study_group;
+            study_group == 1 ? this.images.push(...this.digits) : this.images.push(...this.words);
             this.round2 = true;
-            this.store.study_group == 1 ? this.images.push(...this.digits) : this.images.push(...this.words);
-            if(this.index >= this.images.length - 1) {  
-                writeUserDataFromStore();
-                this.$router.push("question");
-                return;
-            }
             this.index++;
         } else {
             writeUserDataFromStore();
@@ -81,58 +98,6 @@ export default {
       }
     }
 }
-
-//SVG import-----------------------------------
-
-//letters
-import twoW from "@/assets/svgs/2W.svg";
-import threeG from "@/assets/svgs/3G.svg";
-
-import sevenP from "@/assets/svgs/7P.svg";
-import fiveS from "@/assets/svgs/5S.svg";
-
-import fourH from "@/assets/svgs/4H.svg";
-import threeD from "@/assets/svgs/3D.svg";
-
-import sevenK from "@/assets/svgs/7K.svg";
-import eightE from "@/assets/svgs/8E.svg";
-
-import fiveH from "@/assets/svgs/5H.svg";
-import threeW from "@/assets/svgs/3W.svg";
-
-import eightJ from "@/assets/svgs/8J.svg";
-import nineA from "@/assets/svgs/9A.svg";
-
-import fiveV from "@/assets/svgs/5V.svg";
-import threeS from "@/assets/svgs/3S.svg";
-
-import eightP from "@/assets/svgs/8P.svg";
-import nineV from "@/assets/svgs/9V.svg";
-
-import sixT from "@/assets/svgs/6T.svg";
-import sevenC from "@/assets/svgs/7C.svg";
-
-import threeB from "@/assets/svgs/3B.svg";
-import sixH from "@/assets/svgs/6H.svg";
-
-import fourF from "@/assets/svgs/4F.svg";
-import sixX from "@/assets/svgs/6X.svg";
-
-import fiveL from "@/assets/svgs/5L.svg";
-import fourD from "@/assets/svgs/4D.svg";
-
-import fourR from "@/assets/svgs/4R.svg";
-import sixN from "@/assets/svgs/6N.svg";
-
-import sixG from "@/assets/svgs/6G.svg";
-import eightK from "@/assets/svgs/8K.svg";
-
-import sevenH from "@/assets/svgs/7H.svg";
-import fourA from "@/assets/svgs/4A.svg";
-
-import sixJ from "@/assets/svgs/6J.svg";
-import fiveW from "@/assets/svgs/5W.svg";
-//---------------------------------------------
 
 </script>
 

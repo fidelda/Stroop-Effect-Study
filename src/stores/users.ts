@@ -36,14 +36,6 @@ export const useUserStore = defineStore('user', () => {
     user.value.concentration_after = f_concentration_after;
   };
 
-  const uid = () =>  {
-    return user.value.uid;
-  };
-
-  const study_group = () =>  {
-    return user.value.study_group;
-  };
-
   const insertTrialData = (id:number, trialdata:any) => {
     user.value.trials.set(id, trialdata);
   }
@@ -55,8 +47,6 @@ export const useUserStore = defineStore('user', () => {
   return {
     user,
     insertFormValues,
-    uid,
-    study_group,
     insertTrialData,
     insertConcentrationAfter,
     getTrialDataById
