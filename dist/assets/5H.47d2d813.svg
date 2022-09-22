@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="720"
+   height="720"
+   viewBox="0 0 190.5 190.5"
+   version="1.1"
+   id="svg5"
+   sodipodi:docname="5H.svg"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="true"
+     inkscape:zoom="1.0255231"
+     inkscape:cx="377.85594"
+     inkscape:cy="365.66704"
+     inkscape:window-width="1520"
+     inkscape:window-height="1030"
+     inkscape:window-x="10"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid9"
+       spacingx="19.05"
+       spacingy="19.05" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       id="path3337"
+       style="font-size:22.5778px;font-family:'Arial Nova';-inkscape-font-specification:'Arial Nova';stroke-width:0.264583"
+       d="M 39.52937 75.851701 L 39.52937 92.013505 L 41.67911 92.013505 L 41.67911 84.406734 L 49.61661 84.406734 L 49.61661 92.013505 L 51.766349 92.013505 L 51.766349 75.851701 L 49.61661 75.851701 L 49.61661 82.488505 L 41.67911 82.488505 L 41.67911 75.851701 L 39.52937 75.851701 z M 91.115885 76.122485 L 91.115885 92.28429 L 93.265625 92.28429 L 93.265625 84.677519 L 101.20312 84.677519 L 101.20312 92.28429 L 103.35286 92.28429 L 103.35286 76.122485 L 101.20312 76.122485 L 101.20312 82.75929 L 93.265625 82.75929 L 93.265625 76.122485 L 91.115885 76.122485 z M 138.65304 76.122485 L 138.65304 92.28429 L 140.80278 92.28429 L 140.80278 84.677519 L 148.74028 84.677519 L 148.74028 92.28429 L 150.89001 92.28429 L 150.89001 76.122485 L 148.74028 76.122485 L 148.74028 82.75929 L 140.80278 82.75929 L 140.80278 76.122485 L 138.65304 76.122485 z M 64.191947 99.824398 L 64.191947 115.9862 L 66.341687 115.9862 L 66.341687 108.37943 L 74.279187 108.37943 L 74.279187 115.9862 L 76.428927 115.9862 L 76.428927 99.824398 L 74.279187 99.824398 L 74.279187 106.4612 L 66.341687 106.4612 L 66.341687 99.824398 L 64.191947 99.824398 z M 115.09323 99.837317 L 115.09323 115.99912 L 117.24297 115.99912 L 117.24297 108.39235 L 125.18047 108.39235 L 125.18047 115.99912 L 127.33021 115.99912 L 127.33021 99.837317 L 125.18047 99.837317 L 125.18047 106.47412 L 117.24297 106.47412 L 117.24297 99.837317 L 115.09323 99.837317 z " />
+  </g>
+</svg>
