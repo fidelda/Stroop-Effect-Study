@@ -17,22 +17,68 @@
 import "/node_modules/primeflex/primeflex.css";
 import { writeUserDataFromStore } from "@/database/db";
 import { useUserStore } from "@/stores/users";
-import { toRaw } from "vue";
 
 import {
-    twoW, threeG, sevenP, fiveS, fourH, threeD, sevenK,
-    eightE, fiveH, threeW, eightJ, nineA, fiveV, threeS,
-    eightP, nineV, sixT, sevenC, threeB, sixH, fourF,
-    sixX, fiveL, fourD, fourR, sixN, sixG, eightK,
-    sevenH, fourA, sixJ,fiveW
+    twoW, threeG,
+    sevenP, fiveS,
+    fourH, threeD,
+    sevenK, eightE,
+    fiveH, threeW,
+    eightJ, nineA,
+    fiveV, threeS,
+    eightP, nineV, 
+    sixT, sevenC, 
+    threeB, sixH, 
+    fourF, sixX, 
+    fiveL, fourD,
+    fourR, sixN,
+    sixG, eightK,
+    sevenH, fourA,
+    sixJ,fiveW
 } from "@/components/LetterComponents.vue";
 
 import {
-    two5, three4
+    two5, three4,
+    seven4, five5,
+    four0, /*three4*/
+    seven9, eight5,
+
+    five0, three5,
+    eight9, nine4,
+    /*five0*/ three9,
+    /*eight9*/ nine0,
+
+    six4, seven5,
+    /*three5, six4,*/
+    /*four0, six4*/
+    five9, four5,
+
+    /*four0*/ six5,
+    /*seven9*/ four4,
+    /*five0, seven9*/
+    six9 /*five0*/
 } from "@/components/DigitComponents.vue";
 
 import {
-    twoFive, threeFour
+    twoFive, threeFour,
+    sevenFour, fiveFive,
+    fourZero, /*threeFour*/
+    sevenNine, eightFive,
+
+    fiveZero, threeFive,
+    eightNine, nineFour,
+    /*fiveZero*/ threeNine,
+    /*eightNine*/ nineZero,
+
+    sixFour, sevenFive,
+    /*threeFive, sixFour,*/
+    /*fourZero, sixFour*/
+    fiveNine, fourFive,
+
+    /*fourZero*/ sixFive,
+    /*sevenNine*/ fourFour,
+    /*fiveZero, sevenNine*/
+    sixNine /*fiveZero*/
 } from "@/components/WordComponents.vue";
 
 export default {
@@ -63,10 +109,46 @@ export default {
             {first: sixJ,   second: fiveW,  correct_img: 1}
         ],
         digits: [
-            {first: two5,   second: three4,  correct_img: 2}
+            {first: two5,   second: three4, correct_img: 2},
+            {first: seven4, second: five5,  correct_img: 1},
+            {first: four0,  second: three4, correct_img: 1},
+            {first: seven9, second: eight5, correct_img: 2},
+
+            {first: five0,  second: three5, correct_img: 1},
+            {first: eight9, second: nine4,  correct_img: 2},
+            {first: five0,  second: three9, correct_img: 1},
+            {first: eight9, second: nine0,  correct_img: 2},
+
+            {first: six4,   second: seven5, correct_img: 2},
+            {first: three5, second: six4,   correct_img: 2},
+            {first: four0,  second: six4,   correct_img: 2},
+            {first: five9,  second: four5,  correct_img: 1},
+
+            {first: four0,  second: six5,   correct_img: 2},
+            {first: seven9, second: four4,  correct_img: 2},
+            {first: five0,  second: seven9, correct_img: 1},
+            {first: six9,   second: five0,  correct_img: 1}
         ],
         words: [
-            {first: twoFive,   second: threeFour,  correct_img: 2}
+            {first: twoFive,   second: threeFour, correct_img: 2},
+            {first: sevenFour, second: fiveFive,  correct_img: 1},
+            {first: fourZero,  second: threeFour, correct_img: 1},
+            {first: sevenNine, second: eightFive, correct_img: 2},
+
+            {first: fiveZero,  second: threeFive, correct_img: 1},
+            {first: eightNine, second: nineFour,  correct_img: 2},
+            {first: fiveZero,  second: threeNine, correct_img: 1},
+            {first: eightNine, second: nineZero,  correct_img: 2},
+
+            {first: sixFour,   second: sevenFive, correct_img: 2},
+            {first: threeFive, second: sixFour,   correct_img: 2},
+            {first: fourZero,  second: sixFour,   correct_img: 2},
+            {first: fiveNine,  second: fourFive,  correct_img: 1},
+
+            {first: fourZero,  second: sixFive,   correct_img: 2},
+            {first: sevenNine, second: fourFour,  correct_img: 2},
+            {first: fiveZero,  second: sevenNine, correct_img: 1},
+            {first: sixNine,   second: fiveZero,  correct_img: 1}
         ],
         index: 0,
         round2: false
@@ -91,6 +173,7 @@ export default {
             study_group == 1 ? this.images.push(...this.digits) : this.images.push(...this.words);
             this.round2 = true;
             this.index++;
+            this.start_timestamp = Date.now();
         } else {
             writeUserDataFromStore();
             this.$router.push("question");

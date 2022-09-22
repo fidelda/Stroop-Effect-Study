@@ -5,7 +5,7 @@
           <h1>Instructions</h1>
           <p>
             The goal for you as a participant is to answer the following tasks as quickly and correctly as possible.
-            Your reaction time and accuracy will be measured. The experiment contains 32 trials. <br> <br>
+            Your reaction time and accuracy will be measured. The experiment contains 32 trials. <br>
             You have to choose between two pictures consisting of either letters or numbers. The numbers are represented
             to you either as digits or as words, depending on the study group. Your group will be randomly selected during the experiment. 
             For each test, click the image that you think contains the most items. Below is an example of each type of study. 
@@ -82,13 +82,16 @@
     }
   
     html p {
-        font-size: 18px;
-        margin-top: 16px;
+      font-size: 16px;
+      margin-top: 8px;
     }
-    
+      
     .main-wrapper {
-        max-width: 600px;
-        margin: 16px auto;
+      max-width: 610px;
+      margin: 16px auto;
+      text-align: justify;
+      padding-left: 5px;
+      padding-right: 5px;
     }
   
     .main-wrapper h1 {
@@ -136,7 +139,7 @@
 
     .example-image {
       max-width: 450px;
-      min-width: 150px;
+      min-width: 250px;
       border-radius: 12px;
       box-shadow: 2px 2px 8px 0 #cfcfcf; 
     }

@@ -13,9 +13,9 @@
         <p>
           You volunteer to participate in this study. By clicking on the "Accept"-button at the bottom of the page, you give your consent to use your answers in this study about human cognition. Your input is stored anonymously, therefore it is not possible to delete your data after you complete the experiment. The data collected is not personal data as you, as a participant, cannot be identified directly or indirectly.
           You can cancel your participation at any point during the experiment. No data will be stored until you reach the end of the experiment.
-          You must be at least 18 years of age to participate in this study. <br> <br>
+          You must be at least 18 years of age to participate in this study. <br>
           You will be asked some questions. Then you are shown an introduction including an example of the experiment. After the experiment you are asked to answer another short question.
-          The experiment is designed to be completed in less than X minutes.
+          The experiment is designed to be completed in less than 5 minutes.
         </p>
         <div class="terms-checkbox-wrapper">
             <Checkbox id="accept" name="accept" value="Accept" v-model="v$.accept.$model" :class="{'p-invalid':v$.accept.$invalid && submitted}" />
@@ -75,14 +75,16 @@
   }
 
   html p {
-    font-size: 18px;
-    margin-top: 16px;
+    font-size: 16px;
+    margin-top: 8px;
   }
     
   .main-wrapper {
-    max-width: 600px;
+    max-width: 610px;
     margin: 16px auto;
-    text-align:justify;
+    text-align: justify;
+    padding-left: 5px;
+    padding-right: 5px;
   }
   
   .main-wrapper h1 {
