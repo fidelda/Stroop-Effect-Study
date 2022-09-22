@@ -31,15 +31,16 @@ export function writeUserDataFromStore() {
     dyscalculia: store.user.dyscalculia,
     study_group: store.user.study_group
   });
-  
-  const letters = store.user.letters;
-  for (let i = 0; i < letters.size; i++) {
-    const letterData = letters.get(i);
-    db.ref('users/' + store.user.uid + '/letters/letter_id_' + i).set({
-      correct_img: letterData.correct_img,
-      clicked_img: letterData.clicked_img,
-      is_user_right: letterData.is_user_right,
-      time: letterData.time
+
+  const trials = store.user.trials;
+  for (let i = 0; i < trials.size; i++) {
+    const trialData = trials.get(i);
+    const prefix = i < 10 ? '0': '';
+    db.ref('users/' + store.user.uid + '/trials/trial_' + prefix + i).set({
+      correct_img: trialData.correct_img,
+      clicked_img: trialData.clicked_img,
+      is_user_right: trialData.is_user_right,
+      time: trialData.time
     });
   } 
 

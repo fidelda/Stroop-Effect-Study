@@ -5,7 +5,7 @@
             <div class="form-field" :class="{'p-error':v$.concentration.$invalid && submitted}">
                 <div class="form-field-content-wrapper">
                     <p class="form-field-text">Rate from 1-4 how well this statement applied to you during the experiment:*</p>
-                    <p class="form-field-quote">"I am in a calm environment with enough light and I am able to concentrate."</p>
+                    <p class="form-field-quote">"During the experiment I was in a calm environment with enough light and I was able to concentrate."</p>
                     <SelectButton class="form-selectbutton" v-model="v$.concentration.$model" :options="concentrationOptions"
                     optionLabel="name" dataKey="value" aria-labelledby="single"/>
                 </div>

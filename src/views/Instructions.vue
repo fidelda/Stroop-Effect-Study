@@ -4,15 +4,17 @@
         <div class="instructions-wrapper">
           <h1>Instructions</h1>
           <p>
-            The goal for you as a participant is, to answer the following trials as fast and correctly as 
-            possible. Your response time and accuracy are measured.
-            The experiment contains XX trials. <br> <br>
-            You must decide between two lines, which consist of letters, numbers as symbols or numbers 
-            as words. Which kind of lines you see is randomly chosen. Please choose the answer with the 
-            most elements. To choose a line, you can click at the picture. Below you can see an example 
-            for every kind of trial. The correct answer is outlined.
+            The goal for you as a participant is to answer the following tasks as quickly and correctly as possible.
+            Your reaction time and accuracy will be measured. The experiment contains 32 trials. <br> <br>
+            You have to choose between two pictures consisting of either letters or numbers. Depending on the learning group,
+            the numbers can be represented as digits or as words. Your group will be randomly selected during the experiment. 
+            For each test, click the image that you think contains the most items. Below is an example of each type of study. 
+            The correct answer is outlined.
           </p>
         </div>
+        <div class="image-wrapper">
+              <img src="@/assets/examples/examples.jpg" class="example-image">
+            </div>
         <div class="multiple-checkbox-wrapper">
             <div class="checkbox-wrapper">
                 <Checkbox id="read_accept" name="read_accept" value="Read_accept" v-model="v$.read_accept.$model" :class="{'p-invalid':v$.read_accept.$invalid && submitted}" />
@@ -67,7 +69,7 @@
           if (!isFormValid) {
             return;
           } else {
-            this.$router.push("letters0");
+            this.$router.push("trials");
           }
         }
       }
@@ -119,6 +121,23 @@
   
     .checkbox-label {
       margin-left: 6px;
+    }
+
+    .image-wrapper {
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      margin-top: 0px;
+      margin-bottom: 24px;
+      padding-left: 25px;
+      padding-right: 25px;
+    }
+
+    .example-image {
+      max-width: 450px;
+      min-width: 150px;
+      border-radius: 12px;
+      box-shadow: 2px 2px 8px 0 #cfcfcf; 
     }
   
   </style>

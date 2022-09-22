@@ -11,8 +11,7 @@ export const useUserStore = defineStore('user', () => {
     dyslexia: false,
     dyscalculia: false,
     study_group: 0,
-    letters: new Map(),
-    numbers: new Map()
+    trials: new Map()
   });
 
   const insertFormValues = (
@@ -45,12 +44,12 @@ export const useUserStore = defineStore('user', () => {
     return user.value.study_group;
   };
 
-  const insertLetterData = (id:number, letterdata:any) => {
-    user.value.letters.set(id, letterdata);
+  const insertTrialData = (id:number, trialdata:any) => {
+    user.value.trials.set(id, trialdata);
   }
 
-  const getLetterDataById = (id:number) => {
-    return user.value.letters.get(id);
+  const getTrialDataById = (id:number) => {
+    return user.value.trials.get(id);
   }
 
   return {
@@ -58,8 +57,8 @@ export const useUserStore = defineStore('user', () => {
     insertFormValues,
     uid,
     study_group,
-    insertLetterData,
+    insertTrialData,
     insertConcentrationAfter,
-    getLetterDataById
+    getTrialDataById
   }
 });
