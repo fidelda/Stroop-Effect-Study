@@ -1,5 +1,5 @@
 <template>
-    <main class="main-wrapper">
+    <main id="trial-main-wrapper" class="main-wrapper" @mousemove="enableHover" @touchstart="disableHover">
         <div class="card">
             <div class="flex flex-wrap card-container justify-content-center" style="max-width: 700px;">
                 <div class="image-box">
@@ -151,7 +151,8 @@ export default {
             {first: sixNine,   second: fiveZero,  correct_img: 1}
         ],
         index: 0,
-        round2: false
+        round2: false,
+        last_touch_time: 0
       }
     },
     created() {
@@ -178,6 +179,18 @@ export default {
             writeUserDataFromStore();
             this.$router.push("question");
         }
+      },
+      enableHover() {
+        if (new Date() - this.last_touch_time < 500) {
+            return;
+        }
+        document.getElementById("trial-main-wrapper").classList.remove('hasTouch');
+        document.getElementById("trial-main-wrapper").classList.add('hasHover');
+      },
+      disableHover() {
+        this.last_touch_time = new Date();
+        document.getElementById("trial-main-wrapper").classList.remove('hasHover');
+        document.getElementById("trial-main-wrapper").classList.add('hasTouch');
       }
     }
 }
@@ -208,9 +221,13 @@ export default {
         box-shadow: 2px 2px 8px 0 #cfcfcf; 
     }
 
-    .image-box:hover, .image-box:active {
+    #trial-main-wrapper.hasHover .image-box:hover {
         box-shadow: 2px 2px 8px 0 #051fcb7b;
         cursor: pointer;
+    }
+
+    #trial-main-wrapper.hasTouch .image-box:active {
+        box-shadow: 2px 2px 8px 0 #051fcb7b;
     }
 
     .study-image {
