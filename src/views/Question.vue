@@ -52,6 +52,9 @@
             }
         }
     },
+    beforeMount() {
+        window.addEventListener("beforeunload", this.preventNav);
+      },
     methods: {
         handleSubmit(isFormValid) {
             this.submitted = true;
@@ -65,12 +68,18 @@
         },
         storeData() {
             this.store.insertConcentrationAfter(Number(this.concentration.value));
+        },
+        preventNav(event) {
+          if(this.allowLeave) { return };
+          event.preventDefault();
+          // Chrome requires returnValue to be set.
+          event.returnValue = "";
         }
     }
   }
   </script>
   
-  <style>
+  <style scoped>
   
   html {
     background-color: #fbfbfb;
@@ -79,6 +88,7 @@
   .main-wrapper {
     max-width: 600px;
     margin: 0 auto;
+    display: block;
   }
 
   .info-text {
@@ -88,6 +98,7 @@
   
   .form-wrapper {
     text-align: left;
+    width: 100%
   }
   
   .form-field {
@@ -102,22 +113,21 @@
     margin-bottom: 16px;
   }
   
+  .form-selectbutton {
+    width: 100%;
+    margin-top: 18px;
+  }
+
   .form-field-content-wrapper {
-    flex: 1;
+    display: block;
   }
   
   .form-selectbutton {
     width: 100%;
     margin-top: 18px;
+    flex: 1 0 auto;
   }
-  
-  .form-selectbutton .p-button {
-    padding: 8px;
-    width: 25%;
-    height: 50px;
-    font-size: 14px;
-  }
-  
+
   .form-field-quote {
     font-weight: bold;
   }

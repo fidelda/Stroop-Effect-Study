@@ -50,7 +50,8 @@
         return {
           read_accept: null,
           understand_accept: null,
-          submitted: false
+          submitted: false,
+          allowLeave: false
         }
       },
       validations() {
@@ -63,20 +64,30 @@
             }
           }
       },
+      beforeMount() {
+        window.addEventListener("beforeunload", this.preventNav);
+      },
       methods: {
         handleSubmit(isFormValid) {
           this.submitted = true;
           if (!isFormValid) {
             return;
           } else {
+            this.allowLeave = true;
             this.$router.push("trials");
           }
+        },
+        preventNav(event) {
+          if(this.allowLeave) { return };
+          event.preventDefault();
+          // Chrome requires returnValue to be set.
+          event.returnValue = "";
         }
       }
     }
   </script>
   
-  <style>
+  <style scoped>
     html {
       background-color: #fbfbfb;
     }
@@ -111,10 +122,11 @@
   
     .instructions-wrapper {
       margin-bottom: 24px;
-      text-align:justify;
+      text-align: justify;
     }
 
     .multiple-checkbox-wrapper {
+        text-align: left;
         margin-bottom: 24px;
     }
   

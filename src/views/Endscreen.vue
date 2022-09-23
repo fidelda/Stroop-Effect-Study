@@ -10,7 +10,7 @@
     }
 </script>
 
-<style>
+<style scoped>
     html {
         background-color: #fbfbfb;
     }

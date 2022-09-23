@@ -152,11 +152,15 @@ export default {
         ],
         index: 0,
         round2: false,
-        last_touch_time: 0
+        last_touch_time: 0,
+        allowLeave: false
       }
     },
     created() {
         this.start_timestamp = Date.now();
+    },
+    beforeMount() {
+      window.addEventListener("beforeunload", this.preventNav);
     },
     methods: {
       handleClick(clicked_img) {
@@ -191,13 +195,19 @@ export default {
         this.last_touch_time = new Date();
         document.getElementById("trial-main-wrapper").classList.remove('hasHover');
         document.getElementById("trial-main-wrapper").classList.add('hasTouch');
+      },
+      preventNav(event) {
+        if(this.allowLeave) { return };
+        event.preventDefault();
+        // Chrome requires returnValue to be set.
+        event.returnValue = "";
       }
     }
 }
 
 </script>
 
-<style>
+<style scoped>
     html {
         background-color: #fbfbfb;
     }

@@ -4,3 +4,10 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale; 
 }
+
+.form-selectbutton .p-button {
+    padding: 8px;
+    width: 25%;
+    height: 50px;
+    font-size: 14px;
+  }
