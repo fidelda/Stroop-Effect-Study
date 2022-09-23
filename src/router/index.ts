@@ -52,12 +52,20 @@ const router = createRouter({
   ]
 })
 
+const beforeMap = new Map();
+beforeMap.set('question', 'trials');
+beforeMap.set('trials', 'instructions');
+beforeMap.set('instructions', 'about');
+
 router.beforeEach((to, from, next) => {    
   const store = useUserStore();
   if (from.name == 'endscreen' && to.name =='question') {
     next('/');
   } 
-  else if (to.meta.auth && store.user.uid == "" && from.name != 'endscreen') {
+  else if (to.meta.auth && 
+          (store.user.uid == "" || beforeMap.get(from.name) == to.name) && 
+          from.name != 'endscreen') 
+  {
     window.alert('Your progress is lost.');
     next('/');
   }  
