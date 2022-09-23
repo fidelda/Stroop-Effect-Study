@@ -1,1 +1,0 @@
-import{_ as e}from"./0plugin-vue0export-helper.15deba66.js";import{o as t,c as n,e as o}from"./index.76c9ee2a.js";const s={name:"Endscreen"},a={class:"main-wrapper"},c=o("h1",{class:"thank-you-text"},"Thank you for your participation.",-1),r=[c];function _(i,p,d,m,u,f){return t(),n("main",a,r)}const x=e(s,[["render",_]]);export{x as default};
