@@ -125,8 +125,8 @@ export default {
             {first: five9,  second: four5,  correct_img: 1},
 
             {first: four0,  second: six5,   correct_img: 2},
-            {first: seven9, second: four4,  correct_img: 2},
-            {first: five0,  second: seven9, correct_img: 1},
+            {first: seven9, second: four4,  correct_img: 1},
+            {first: five0,  second: seven9, correct_img: 2},
             {first: six9,   second: five0,  correct_img: 1}
         ],
         words: [
@@ -146,8 +146,8 @@ export default {
             {first: fiveNine,  second: fourFive,  correct_img: 1},
 
             {first: fourZero,  second: sixFive,   correct_img: 2},
-            {first: sevenNine, second: fourFour,  correct_img: 2},
-            {first: fiveZero,  second: sevenNine, correct_img: 1},
+            {first: sevenNine, second: fourFour,  correct_img: 1},
+            {first: fiveZero,  second: sevenNine, correct_img: 2},
             {first: sixNine,   second: fiveZero,  correct_img: 1}
         ],
         index: 0,
@@ -208,7 +208,7 @@ export default {
         box-shadow: 2px 2px 8px 0 #cfcfcf; 
     }
 
-    .image-box:hover {
+    .image-box:hover, .image-box:active {
         box-shadow: 2px 2px 8px 0 #051fcb7b;
         cursor: pointer;
     }
