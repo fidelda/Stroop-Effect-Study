@@ -168,14 +168,14 @@
     
   .main-wrapper {
     max-width: 600px;
-    min-width: 430px;
+    min-width: 300px;
     margin: 0 auto;
     text-align: left;
   }
   
   .page-title {
     font-family: 'Montserrat', sans-serif;
-    font-size: 34px;
+    font-size: calc(26px + 0.8vw);
     color: #2d2d2d;
     font-weight: 300;
     margin-top: 10px;
