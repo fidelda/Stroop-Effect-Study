@@ -168,7 +168,9 @@
     
   .main-wrapper {
     max-width: 600px;
+    min-width: 430px;
     margin: 0 auto;
+    text-align: left;
   }
   
   .page-title {
