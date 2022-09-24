@@ -149,7 +149,8 @@
       padding-left: 25px;
       padding-right: 25px;
       min-width: 250px;
-      min-height: 350px;
+      min-height: 280px;
+      max-height: 350px;
     }
 
     .example-image {

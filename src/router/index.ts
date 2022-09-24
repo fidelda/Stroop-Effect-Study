@@ -59,7 +59,7 @@ beforeMap.set('instructions', 'form');
 
 router.beforeEach((to, from, next) => {
   const store = useUserStore();
-  if (from.name == 'endscreen' && to.name =='question' || to.meta.auth && from.name != 'about' && store.user.uid == '') {
+  if (from.name == 'endscreen' || to.meta.auth && from.name != 'about' && store.user.uid == '') {
     next('/');
   } 
   else if (to.meta.auth && beforeMap.get(from.name) == to.name && from.name != 'endscreen') 
