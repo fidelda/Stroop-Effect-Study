@@ -1,6 +1,6 @@
 <template>
     <main class="main-wrapper">
-        <h3 class="info-text">Please answer this last question before submitting your results</h3>
+        <h3 class="info-text">Please answer one last question before submitting your results</h3>
         <form class="form-wrapper" @submit.prevent="handleSubmit(!v$.$invalid)">
             <div class="form-field" :class="{'p-error':v$.concentration.$invalid && submitted}">
                 <div class="form-field-content-wrapper">

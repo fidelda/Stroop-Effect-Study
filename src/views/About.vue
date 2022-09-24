@@ -46,12 +46,8 @@
     data() {
       return {
         accept: null,
-        submitted: false,
-        allowLeave: false
+        submitted: false
       }
-    },
-    beforeMount() {
-      window.addEventListener("beforeunload", this.preventNav);
     },
     validations() {
         return {
@@ -67,20 +63,14 @@
           return;
         } else {
           this.allowLeave = true;
-          this.$router.push("instructions");
+          this.$router.push("form");
         }
-      },
-      preventNav(event) {
-        if(this.allowLeave) { return };
-        event.preventDefault();
-        // Chrome requires returnValue to be set.
-        event.returnValue = "";
       }
     }
   }
 </script>
 
-<style>
+<style scoped>
   html {
     background-color: #fbfbfb;
   }

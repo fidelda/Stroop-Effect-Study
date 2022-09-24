@@ -1,7 +1,6 @@
 <template>
     <main class="main-wrapper">
-        <h1 class="page-title">Human Cognition Study</h1>
-        <p class="subtitle">Please fill out the form to begin with the study</p>
+        <h3 class="info-text">Please fill out the form</h3>
         <form class="form-wrapper" @submit.prevent="handleSubmit(!v$.$invalid)">
             <div class ="form-field" :class="{'p-error':v$.device.$invalid && submitted}">
                 <div class="form-field-content-wrapper">
@@ -111,7 +110,8 @@
             dyslexia: '',
             dyscalculia: '',
             study_group: null,
-            submitted: false
+            submitted: false,
+            allowLeave: false
         }
     },
     validations() {
@@ -133,6 +133,9 @@
             }
         }
     },
+    beforeMount() {
+      window.addEventListener("beforeunload", this.preventNav);
+    },
     methods: {
         handleSubmit(isFormValid) {
             this.submitted = true;
@@ -142,7 +145,8 @@
                 this.uid = uuid.v4();
                 this.study_group = Math.floor(Math.random() * 2) + 1;
                 this.storeData();
-                this.$router.push("about");
+                this.allowLeave = true;
+                this.$router.push("instructions");
             }
         },
         storeData() {
@@ -154,7 +158,13 @@
                 this.dyslexia == "Yes",
                 this.dyscalculia == "Yes",
                 this.study_group
-            );
+            )
+        },
+        preventNav(event) {
+                if(this.allowLeave) { return };
+                event.preventDefault();
+                // Chrome requires returnValue to be set.
+                event.returnValue = "";
         }
     }
   }
@@ -170,24 +180,17 @@
     max-width: 600px;
     min-width: 300px;
     margin: 0 auto;
+  }
+
+  .info-text {
+    font-family:'Source Sans Pro', sans-serif;
+    text-align: center;
+  }
+
+  .form-wrapper {
     text-align: left;
   }
   
-  .page-title {
-    font-family: 'Montserrat', sans-serif;
-    font-size: calc(26px + 0.8vw);
-    color: #2d2d2d;
-    font-weight: 300;
-    margin-top: 10px;
-    margin-bottom: 0px;
-  }
-  
-  .subtitle {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #b1b1b1;    
-    margin-top: 5px;
-  }
   
   .form-field {
     border: 1px solid #f6f6f6;

@@ -14,7 +14,7 @@
         </div>
         <div class="image-wrapper">
               <img src="@/assets/examples/examples.jpg" class="example-image">
-            </div>
+        </div>
         <div class="multiple-checkbox-wrapper">
             <div class="checkbox-wrapper">
                 <Checkbox id="read_accept" name="read_accept" value="Read_accept" v-model="v$.read_accept.$model" :class="{'p-invalid':v$.read_accept.$invalid && submitted}" />
@@ -65,6 +65,7 @@
           }
       },
       beforeMount() {
+        this.allowLeave = false;
         window.addEventListener("beforeunload", this.preventNav);
       },
       methods: {
@@ -144,9 +145,11 @@
       flex: 1;
       justify-content: center;
       margin-top: 0px;
-      margin-bottom: 24px;
+      margin-bottom: 25px;
       padding-left: 25px;
       padding-right: 25px;
+      min-width: 250px;
+      min-height: 350px;
     }
 
     .example-image {
