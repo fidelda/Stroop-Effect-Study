@@ -1,246 +1,194 @@
 <template>
-    <main class="main-wrapper">
+    <div class="form-view">
         <h3 class="info-text">Please fill out the form</h3>
-        <form class="form-wrapper" @submit.prevent="handleSubmit(!v$.$invalid)">
-            <div class ="form-field" :class="{'p-error':v$.device.$invalid && submitted}">
+
+        <div class="form-wrapper">
+
+            <!-- Input Method -->
+            <div class="form-field">
                 <div class="form-field-content-wrapper">
                     <p class="form-field-text">What is your method of input?*</p>
-                    <Dropdown class="form-dropdown" v-model="v$.device.$model"
-                    :options="devices" optionLabel="label" optionValue="value" 
-                    autoWidth="false" placeholder="Select an input" />
+                    <select class="form-Select" v-model="surveyData.device">
+                        <option value="" :disabled="true">Please choose an option</option>
+                        <option v-for="device in devices" :value="device">{{ device }}</option>
+                    </select>
                 </div>
             </div>
-            <div class="form-field" :class="{'p-error':v$.concentration.$invalid && submitted}">
+
+            <!-- Concentration Method -->
+            <div class="form-field">
                 <div class="form-field-content-wrapper">
                     <p class="form-field-text">Rate from 1-4 how well this statement applies to you:*</p>
-                    <p class="form-field-quote">"I am in a calm environment with enough light and I am able to concentrate."</p>
-                    <SelectButton class="form-selectbutton" v-model="v$.concentration.$model" :options="concentrationOptions"
-                    optionLabel="name" dataKey="value" aria-labelledby="single"/>
+                    <p class="form-field-quote">
+                        "I am in a calm environment with enough light and I am able to concentrate."
+                    </p>
+                    <div class="select-button-row">
+                        <SelectButton :options="conOptions" v-model="surveyData.concentration_before"></SelectButton>
+                    </div>
                 </div>
             </div>
-            <div class="form-field" :class="{'p-error':v$.age_group.$invalid && submitted}">
+
+            <!-- Age Group -->
+            <div class="form-field">
                 <div class="form-field-content-wrapper">
                     <p class="form-field-radiobutton-text">Please select your age group:*</p>
                     <div class="form-field-radiobutton-wrapper">
-                        <RadioButton class="form-radiobutton" inputId="group1" name="age_group" value="1" v-model="v$.age_group.$model"/>
+                        <input type="radio" class="form-radiobutton" inputId="group1" name="age_group" value="1"
+                            v-model="surveyData.age_group" />
                         <label class="radiobutton-text" for="group1">18 - 35</label>
                     </div>
                     <div class="form-field-radiobutton-wrapper">
-                        <RadioButton class="form-radiobutton" inputId="group2" name="age_group" value="2" v-model="v$.age_group.$model"/>
+                        <input type="radio" class="form-radiobutton" inputId="group2" name="age_group" value="2"
+                            v-model="surveyData.age_group" />
                         <label class="radiobutton-text" for="group2">35 - 55</label>
                     </div>
                     <div class="form-field-radiobutton-wrapper">
-                        <RadioButton class="form-radiobutton" inputId="group3" name="age_group" value="3" v-model="v$.age_group.$model"/>
+                        <input type="radio" class="form-radiobutton" inputId="group3" name="age_group" value="3"
+                            v-model="surveyData.age_group" />
                         <label class="radiobutton-text" for="group3">55+</label>
                     </div>
                 </div>
             </div>
-            <div class="form-field" :class="{'p-error':v$.dyslexia.$invalid && submitted}">
+
+            <!-- Dyslexia -->
+            <div class="form-field">
                 <div class="form-field-content-wrapper">
                     <p class="form-field-radiobutton-text">Do you have dyslexia or any other reading disability?*</p>
                     <div class="form-field-radiobutton-wrapper">
-                        <RadioButton class="form-radiobutton" inputId="yes1" name="dyslexia" value="Yes" v-model="v$.dyslexia.$model"/>
+                        <input type="radio" class="form-radiobutton" inputId="yes1" name="dyslexia" value="Yes"
+                            v-model="surveyData.dyslexia" />
                         <label class="radiobutton-text" for="yes1">Yes</label>
                     </div>
                     <div class="form-field-radiobutton-wrapper">
-                        <RadioButton class="form-radiobutton" inputId="no1" name="dyslexia" value="No" v-model="v$.dyslexia.$model"/>
+                        <input type="radio" class="form-radiobutton" inputId="no1" name="dyslexia" value="No"
+                            v-model="surveyData.dyslexia" />
                         <label class="radiobutton-text" for="no1">No</label>
                     </div>
                 </div>
             </div>
-            <div class="form-field" :class="{'p-error':v$.dyscalculia.$invalid && submitted}">
+
+            <!-- Dyscalculia -->
+            <div class="form-field">
                 <div class="form-field-content-wrapper">
                     <p class="form-field-radiobutton-text">Do you have dyscalculia?*</p>
                     <div class="form-field-radiobutton-wrapper">
-                        <RadioButton class="form-radiobutton" inputId="yes2" name="dyscalculia" value="Yes" v-model="v$.dyscalculia.$model"/>
+                        <input type="radio" class="form-radiobutton" inputId="yes2" name="dyscalculia" value="Yes"
+                            v-model="surveyData.dyscalculia" />
                         <label class="radiobutton-text" for="yes2">Yes</label>
                     </div>
                     <div class="form-field-radiobutton-wrapper">
-                        <RadioButton class="form-radiobutton" inputId="no2" name="dyscalculia" value="No" v-model="v$.dyscalculia.$model"/>
-                        <label class="radiobutton-text"  for="no2">No</label>
+                        <input type="radio" class="form-radiobutton" inputId="no2" name="dyscalculia" value="No"
+                            v-model="surveyData.dyscalculia" />
+                        <label class="radiobutton-text" for="no2">No</label>
                     </div>
                 </div>
             </div>
-            <div class="form-button-wrapper">  
-                <Button type="submit" label="Next" class="mt-2"></Button>
+
+            <div class="form-button-wrapper">
+                <button class="mt-2" :disabled="!isFormValid()" @click="submitForm()">Next</button>
             </div>
-        </form>
-    </main>
-  </template>
-  
-  <script>
-  import { useVuelidate } from "@vuelidate/core";
-  import { required } from '@vuelidate/validators';
-  import { useUserStore } from "@/stores/users";
-  import { uuid } from 'vue-uuid';
-  
-  import Dropdown from 'primevue/dropdown';
-  import SelectButton from 'primevue/selectbutton';
-  import RadioButton from 'primevue/radiobutton';
-  import Button from 'primevue/button';
-  
-  export default {
-    name: 'Form',
-    components: {
-        Dropdown,
-        SelectButton,
-        RadioButton,
-        Button
-    },
-    setup: () => ({ v$: useVuelidate(), store: useUserStore() }),
-    data() {
-        return {
-            uid: '',
-            device: '',
-            devices: [
-                {"label": "Mouse", "value": "Mouse"},
-                {"label": "Touchscreen", "value": "Touchscreen"},
-                {"label": "Pen", "value": "Pen"},
-                {"label": "Trackpad", "value": "Trackpad"},
-                {"label": "Other", "value": "Other"}
-            ],
-            concentration: null,
-            concentrationOptions: [
-                {name: '1: Very bad', value: 1},
-                {name: '2: Bad', value: 2},
-                {name: '3: Good', value: 3},
-                {name: '4: Very good', value: 4}
-            ],
-            age_group: '',
-            dyslexia: '',
-            dyscalculia: '',
-            study_group: null,
-            submitted: false,
-            allowLeave: false
-        }
-    },
-    validations() {
-        return {
-            device: {
-                required
-            },
-            concentration: {
-                required
-            },
-            age_group: {
-                required
-            },
-            dyslexia: {
-                required
-            },
-            dyscalculia: {
-                required
-            }
-        }
-    },
-    beforeMount() {
-      window.addEventListener("beforeunload", this.preventNav);
-    },
-    methods: {
-        handleSubmit(isFormValid) {
-            this.submitted = true;
-            if (!isFormValid) {
-                return;
-            } else {
-                this.uid = uuid.v4();
-                this.study_group = Math.floor(Math.random() * 2) + 1;
-                this.storeData();
-                this.allowLeave = true;
-                this.$router.push("instructions");
-            }
-        },
-        storeData() {
-            this.store.insertFormValues(
-                this.uid,
-                this.device,
-                Number(this.concentration.value),
-                Number(this.age_group),
-                this.dyslexia == "Yes",
-                this.dyscalculia == "Yes",
-                this.study_group
-            )
-        },
-        preventNav(event) {
-                if(this.allowLeave) { return };
-                event.preventDefault();
-                // Chrome requires returnValue to be set.
-                event.returnValue = "";
-        }
-    }
-  }
-  </script>
-  
-  <style scoped>
-  
-  html {
-    background-color: #fbfbfb;
-  }
-    
-  .main-wrapper {
+
+        </div>
+    </div>
+</template>
+
+<script setup lang="ts">
+import { useUserDataStore } from "@/store";
+import { ref } from "vue";
+import SelectButton from "@/components/SelectButton.vue";
+import router from "@/router";
+import { emptySurveyData } from "@/interface";
+
+const store = useUserDataStore();
+const surveyData = ref({ ...emptySurveyData });
+
+const devices = ["Mouse", "Touchscreen", "Pen", "Trackpad", "Other"];
+const conOptions = ["1: Very bad", "2: Bad", "3: Good", "4: Very Good"]
+
+const isFormValid = (): boolean => {
+    return surveyData.value.device != ""
+        && surveyData.value.concentration_before >= 0
+        && surveyData.value.age_group >= 0
+        && surveyData.value.dyslexia != null
+        && surveyData.value.dyscalculia != null
+}
+
+const submitForm = () => {
+    store.updateSurveyData(surveyData.value);
+    router.push('/instructions');
+}
+</script>
+
+<style scoped>
+input[type="radio"] {
+    cursor: pointer;
+}
+
+.form-view {
     max-width: 600px;
     min-width: 300px;
     margin: 0 auto;
-  }
+}
 
-  .info-text {
-    font-family:'Source Sans Pro', sans-serif;
+.info-text {
     text-align: center;
-  }
+}
 
-  .form-wrapper {
+.form-wrapper {
     text-align: left;
-  }
-  
-  
-  .form-field {
+}
+
+
+.form-field {
     border: 1px solid #f6f6f6;
     box-shadow: 2px 2px 8px 0 #cfcfcf;
-    border-radius: 8px; 
+    border-radius: 8px;
     display: flex;
     align-items: center;
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-bottom: 16px;
+    padding: 1.25rem;
     margin-bottom: 16px;
-  }
-  
-  .form-field-content-wrapper {
+}
+
+.form-field p:first-child {
+    margin-top: 0;
+}
+
+.form-field-content-wrapper {
     flex: 1;
-  }
-  
-  .form-dropdown {
+}
+
+.form-Select {
     width: 100%;
-  }
-  
-  .form-selectbutton {
+}
+
+.form-selectbutton {
     width: 100%;
     margin-top: 18px;
-  }
-  
-  .form-field-quote {
+}
+
+.form-field-quote {
     font-weight: bold;
-  }
-  
-  .form-field-radiobutton-text {
+}
+
+.form-field-radiobutton-text {
     margin-top: 16px;
     margin-bottom: 8px;
-  }
-  
-  .form-field-radiobutton-wrapper {
+}
+
+.form-field-radiobutton-wrapper {
     line-height: 100%;
     margin-bottom: 5px;
-  }
-  
-  .radiobutton-text {
+}
+
+.radiobutton-text {
     margin-left: 5px;
-  }
-  
-  .form-button-wrapper {
+}
+
+.form-button-wrapper {
     display: flex;
-  }
-  
-  .form-button-wrapper .mt-2 { 
+}
+
+.form-button-wrapper .mt-2 {
     width: 100%;
-  }
-  
-  </style>
+}
+</style>

@@ -1,5 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { useUserStore } from '@/stores/users'
+import { useUserDataStore } from '@/store'
+import About from '@/views/About.vue';
+import Form from '@/views/Form.vue';
+import Instructions from '@/views/Instructions.vue';
+import Trials from '@/views/Trials.vue';
+import Question from '@/views/Question.vue';
+import Endscreen from '@/views/Endscreen.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,66 +13,56 @@ const router = createRouter({
     {
       path: '/',
       name: 'about',
-      component: () => import('@/views/About.vue')
+      component: About
     },
     {
       path: '/form',
       name: 'form',
-      component: () => import('@/views/Form.vue'),      
-      meta: {
-        auth: true // A protected route
-      },
+      component: Form,   
     },
     {
       path: '/instructions',
       name: 'instructions',
-      component: () => import('@/views/Instructions.vue'),
-      meta: {
-        auth: true // A protected route
-      },
+      component: Instructions,
     },
     {
       path: '/trials',
       name: 'trials',
-      component: () => import('@/views/Trials.vue'),
-      meta: {
-        auth: true // A protected route
-      },
+      component: Trials,
     },
     {
       path: '/question',
       name: 'question',
-      component: () => import('@/views/Question.vue'),
-      meta: {
-        auth: true // A protected route
-      },
+      component: Question,
     },
     {
       path: '/endscreen',
       name: 'endscreen',
-      component: () => import('@/views/Endscreen.vue'),
-      meta: {
-        auth: true // A protected route
-      },
+      component: Endscreen,
     },
   ]
 })
 
-const beforeMap = new Map();
-beforeMap.set('question', 'trials');
-beforeMap.set('trials', 'instructions');
-beforeMap.set('instructions', 'form');
-
 router.beforeEach((to, from, next) => {
-  const store = useUserStore();
-  if (from.name == 'endscreen' || to.meta.auth && from.name != 'about' && store.user.uid == '') {
-    next('/');
+  const store = useUserDataStore();
+  
+  // Avoiding that a user participates twice
+  if (from.name != 'endscreen' && to.name != 'endscreen' && store.hasParticipated()) {
+    window.alert('You have already participated.');
+    next('/endscreen');
   } 
-  else if (to.meta.auth && beforeMap.get(from.name) == to.name && from.name != 'endscreen') 
-  {
-    window.alert('Your progress is lost.');
-    next('/');
-  }  
+  // Handling the user going back during the trial (Abort Trial)
+  else if (from.name == 'trials' && to.name != 'question') {
+    store.abortStudy();
+    window.alert('You have aborted the study.');
+    next('/endscreen');
+  }
+  // Handling the user going back at the end screen question
+  else if (from.name == 'question' && to.name != 'endscreen') {
+    window.alert('Please close the tab if you wish to abort the study.');
+    next('/question');
+  }
+  // Default
   else {
     next();
   }    
